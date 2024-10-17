@@ -6,7 +6,7 @@
 
 import pywikibot
 
-raw_txt = 'report1.txt'
+raw_txt = './reports/report1.txt'
 page_text = '* 生成時間：~~~~~\n'
 with open(raw_txt, 'r') as infile:
     for line in infile:
