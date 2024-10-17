@@ -5,15 +5,23 @@
 # Author: CHAU SHING SHING HAMISH
 
 import pywikibot
+import re
 
 raw_txt = './reports/report1.txt'
 page_text = '* 生成時間：~~~~~\n'
+
+bad_pattern = re.compile(r'\{\{(受限[制製]文件|[Bb]ad\s?image|[Rr]estricted use)\}\}')
+site = pywikibot.Site('zh', 'wikipedia')
+
 with open(raw_txt, 'r') as infile:
     for line in infile:
         line = line.strip()
-        page_text += f'# [[:File:{line}]]\n'
+        page_text += f'# [[:File:{line}]]'
+        if bad_pattern.search(pywikibot.Page(site, 'File:'+line).text):
+            page_text += '（受限制文件）'
+        page_text += '\n'
 
-site = pywikibot.Site('zh', 'wikipedia')
+
 report_page = pywikibot.Page(site, 'Wikipedia:資料庫報告/檔案描述頁')
 
 report_page.text = page_text
