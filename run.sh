@@ -10,8 +10,8 @@
 ZHWIKI="zhwiki"
 COMMONSWIKI="commonswiki"
 
-REPORT_DIR=./reports
-SCRIPT_DIR=./
+REPORT_DIR=~/zhwiki-db-report/reports
+SCRIPT_DIR=~/zhwiki-db-report
 
 ##
 # Runs a MySQL query against the labs replica database and puts the result in ~/public_html/r.
